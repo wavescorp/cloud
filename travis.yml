@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - node
+
+notifications:
+  email:
+    recipients:
+      - rasmus@hummelmose.dk
+    on_success: change
+    on_failure: always

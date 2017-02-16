@@ -5,12 +5,17 @@
   "author": "Rasmus H. Hummelmose <rhh@wavescorp.io>",
   "main": "main.js",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "test": "mocha tests/main.js"
   },
   "repository" : {
     "type": "git",
     "url": "https://github.com/wavescorp/cloud.git"
   },
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "homepage": "https://www.wavescorp.io",
+  "dependencies": {
+    "mocha": "latest"
+  }
 }
