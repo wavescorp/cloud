@@ -24,4 +24,4 @@ after_success:
   - docker tag waves/cloud:$COMMIT $AWS_DOCKER_REPO:$TRAVIS_BRANCH
   - docker tag waves/cloud:$COMMIT $AWS_DOCKER_REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker images --all
-  - docker push $AWS_DOCKER_REPO:$COMMIT
+  - docker push $AWS_DOCKER_REPO
