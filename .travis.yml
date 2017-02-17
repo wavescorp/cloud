@@ -12,9 +12,16 @@ sudo: required
 services:
   - docker
 
+before_install:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+  - LOGIN_COMMAND=$(aws ecr get-login)
+  - eval $LOGIN_COMMAND
+
 after_success:
   - docker build -t waves/cloud:$COMMIT .
+  - docker tag waves/cloud:$COMMIT waves/cloud:$AWS_DOCKER_REPO
   - docker tag waves/cloud:$COMMIT waves/cloud:$TRAVIS_BRANCH
   - docker tag waves/cloud:$COMMIT waves/cloud:travis-$TRAVIS_BUILD_NUMBER
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e none $DOCKER_LOGIN_URL
-  - docker push $DOCKER_REPO_HOST/waves/cloud:$COMMIT
+  - docker images --all
+  - docker push $AWS_DOCKER_REPO/cloud:$COMMIT
