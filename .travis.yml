@@ -16,5 +16,5 @@ after_success:
   - docker build -t waves/cloud:$COMMIT .
   - docker tag waves/cloud:$COMMIT waves/cloud:$TRAVIS_BRANCH
   - docker tag waves/cloud:$COMMIT waves/cloud:travis-$TRAVIS_BUILD_NUMBER
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e none $DOCKER_HOST
-  - docker push $DOCKER_HOST/waves/cloud:$COMMIT
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e none $DOCKER_LOGIN_URL
+  - docker push $DOCKER_REPO_HOST/waves/cloud:$COMMIT
